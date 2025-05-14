@@ -9,13 +9,22 @@
       padding: 0;
       background-color: #ffc0cb;
       font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #content {
       text-align: center;
+      max-width: 600px;
     }
 
     #heart {
       font-size: 100px;
       animation: pulse 1s infinite alternate;
-      margin-top: 100px;
+      margin-bottom: 30px;
     }
 
     @keyframes pulse {
@@ -24,7 +33,7 @@
     }
 
     button {
-      margin: 20px;
+      margin: 10px;
       padding: 15px 30px;
       font-size: 16px;
       cursor: pointer;
@@ -32,50 +41,85 @@
       border: none;
       background-color: #ff69b4;
       color: white;
-    }
-
-    .jumping {
-      position: relative;
+      transition: transform 0.2s ease;
     }
 
     img {
       max-width: 90%;
       height: auto;
       margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .jumping {
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .button-container {
+      position: relative;
     }
   </style>
 </head>
 <body>
-
   <div id="content">
     <div id="heart">💗</div>
-    <button onclick="start()">Klick mich</button>
+    <button onclick="playSound(); start()">Klick mich</button>
   </div>
+
+  <!-- Klicksound (Base64 eingebettet) -->
+  <audio id="clickSound">
+    <source src="data:audio/mpeg;base64,//uQxAAAD...<KÜRZUNG>" type="audio/mpeg">
+  </audio>
 
   <script>
     let content = document.getElementById('content');
+
+    function playSound() {
+      const sound = document.getElementById("clickSound");
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
+    }
+
+    function springen(button) {
+      playSound();
+      button.classList.add("jumping");
+      const maxX = window.innerWidth - 150;
+      const maxY = window.innerHeight - 100;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+      button.style.left = randX + 'px';
+      button.style.top = randY + 'px';
+    }
 
     function start() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/736x/b4/bb/b2/b4bbb2198b036fe1024571ec6b60f8b8.jpg" />
         <p>Darf ich dich etwas fragen?</p>
-        <button onclick="frage1()">Ja</button>
-        <button id="nein1" onclick="springen(this)">Nein</button>
+        <div class="button-container">
+          <button onclick="playSound(); frage1()">Ja</button>
+          <button id="nein1" onclick="springen(this)">Nein</button>
+        </div>
       `;
-    }
-
-    function springen(button) {
-      button.style.position = 'absolute';
-      button.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-      button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
     }
 
     function frage1() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/564x/98/2d/4b/982d4b383ed2cd2a6a965f3c00e95f90.jpg" />
         <p>Bist du schwul?</p>
-        <button onclick="frage2()">Ja</button>
-        <button onclick="frage1()">Versuche nochmal</button>
+        <div class="button-container">
+          <button onclick="playSound(); frage2()">Ja</button>
+          <button onclick="playSound(); sackgasse('frage1')">Nein</button>
+        </div>
+      `;
+    }
+
+    function sackgasse(zurueckFunktion) {
+      content.innerHTML = `
+        <p>Versuche nochmal 😅</p>
+        <button onclick="playSound(); ${zurueckFunktion}()">Zurück</button>
       `;
     }
 
@@ -83,8 +127,10 @@
       content.innerHTML = `
         <img src="https://media.tenor.com/ej_uvg93_v8AAAAM/yippee-iluvmybf.gif" />
         <p>Oh ich meinte Junge. Also Bist du ein Junge?</p>
-        <button onclick="frage3()">Ja</button>
-        <button onclick="springen(this)">Nein</button>
+        <div class="button-container">
+          <button onclick="playSound(); frage3()">Ja</button>
+          <button onclick="springen(this)">Nein</button>
+        </div>
       `;
     }
 
@@ -92,8 +138,10 @@
       content.innerHTML = `
         <img src="https://i.pinimg.com/236x/2d/e3/52/2de35203d04ced9f4239befc87a95a35.jpg" />
         <p>Denkst du ich bin lustig?</p>
-        <button onclick="lustig()">Ja</button>
-        <button onclick="nichtLustig()">Nein</button>
+        <div class="button-container">
+          <button onclick="playSound(); lustig()">Ja</button>
+          <button onclick="playSound(); nichtLustig()">Nein</button>
+        </div>
       `;
     }
 
@@ -101,6 +149,8 @@
       content.innerHTML = `
         <p>Okay</p>
         <img src="https://media.tenor.com/aJeIvS0AuHcAAAAe/cat1.png" />
+        <br>
+        <button onclick="playSound(); frage3()">Zurück</button>
       `;
     }
 
@@ -110,14 +160,14 @@
         <p>Ich finde dich ja schon sehr lustig</p>
         <img src="https://content.imageresizer.com/images/memes/Laughing-Cat-meme-7.jpg" />
         <br>
-        <button onclick="letzteFrage()">Weiter</button>
+        <button onclick="playSound(); letzteFrage()">Weiter</button>
       `;
     }
 
     function letzteFrage() {
       content.innerHTML = `
         <p>Okay, jetzt habe ich eine letzte Frage für dich:</p>
-        <button onclick="frageBeziehung()">Weiter</button>
+        <button onclick="playSound(); frageBeziehung()">Weiter</button>
       `;
     }
 
@@ -125,8 +175,10 @@
       content.innerHTML = `
         <img src="https://i.pinimg.com/474x/f5/49/05/f54905bd034774177d415a91eba8edcf.jpg" />
         <p>Willst du mit mir zusammen sein?</p>
-        <button onclick="jaBeziehung()">Ja</button>
-        <button onclick="neinBeziehung()">Nein</button>
+        <div class="button-container">
+          <button onclick="playSound(); jaBeziehung()">Ja</button>
+          <button onclick="playSound(); neinBeziehung()">Nein</button>
+        </div>
       `;
     }
 
@@ -143,6 +195,5 @@
       `;
     }
   </script>
-
 </body>
 </html>
