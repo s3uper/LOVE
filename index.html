@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Frage-Webseite</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffc0cb;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #heart {
+      font-size: 100px;
+      animation: pulse 1s infinite alternate;
+      margin-top: 100px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
+
+    button {
+      margin: 20px;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    .jumping {
+      position: relative;
+    }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content">
+    <div id="heart">💗</div>
+    <button onclick="start()">Klick mich</button>
+  </div>
+
+  <script>
+    let content = document.getElementById('content');
+
+    function start() {
+      content.innerHTML = `
+        <img src="https://i.pinimg.com/736x/b4/bb/b2/b4bbb2198b036fe1024571ec6b60f8b8.jpg" />
+        <p>Darf ich dich etwas fragen?</p>
+        <button onclick="frage1()">Ja</button>
+        <button id="nein1" onclick="springen(this)">Nein</button>
+      `;
+    }
+
+    function springen(button) {
+      button.style.position = 'absolute';
+      button.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+      button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+    }
+
+    function frage1() {
+      content.innerHTML = `
+        <img src="https://i.pinimg.com/564x/98/2d/4b/982d4b383ed2cd2a6a965f3c00e95f90.jpg" />
+        <p>Bist du schwul?</p>
+        <button onclick="frage2()">Ja</button>
+        <button onclick="frage1()">Versuche nochmal</button>
+      `;
+    }
+
+    function frage2() {
+      content.innerHTML = `
+        <img src="https://media.tenor.com/ej_uvg93_v8AAAAM/yippee-iluvmybf.gif" />
+        <p>Oh ich meinte Junge. Also Bist du ein Junge?</p>
+        <button onclick="frage3()">Ja</button>
+        <button onclick="springen(this)">Nein</button>
+      `;
+    }
+
+    function frage3() {
+      content.innerHTML = `
+        <img src="https://i.pinimg.com/236x/2d/e3/52/2de35203d04ced9f4239befc87a95a35.jpg" />
+        <p>Denkst du ich bin lustig?</p>
+        <button onclick="lustig()">Ja</button>
+        <button onclick="nichtLustig()">Nein</button>
+      `;
+    }
+
+    function nichtLustig() {
+      content.innerHTML = `
+        <p>Okay</p>
+        <img src="https://media.tenor.com/aJeIvS0AuHcAAAAe/cat1.png" />
+      `;
+    }
+
+    function lustig() {
+      content.innerHTML = `
+        <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
+        <p>Ich finde dich ja schon sehr lustig</p>
+        <img src="https://content.imageresizer.com/images/memes/Laughing-Cat-meme-7.jpg" />
+        <br>
+        <button onclick="letzteFrage()">Weiter</button>
+      `;
+    }
+
+    function letzteFrage() {
+      content.innerHTML = `
+        <p>Okay, jetzt habe ich eine letzte Frage für dich:</p>
+        <button onclick="frageBeziehung()">Weiter</button>
+      `;
+    }
+
+    function frageBeziehung() {
+      content.innerHTML = `
+        <img src="https://i.pinimg.com/474x/f5/49/05/f54905bd034774177d415a91eba8edcf.jpg" />
+        <p>Willst du mit mir zusammen sein?</p>
+        <button onclick="jaBeziehung()">Ja</button>
+        <button onclick="neinBeziehung()">Nein</button>
+      `;
+    }
+
+    function jaBeziehung() {
+      content.innerHTML = `
+        <img src="https://media.tenor.com/5nSKlBlwdkIAAAAe/cat.png" />
+      `;
+    }
+
+    function neinBeziehung() {
+      content.innerHTML = `
+        <img src="https://i.pinimg.com/736x/f1/d7/68/f1d7682721bd99e2b7e11f5e6da6de10.jpg" />
+        <p>Schade 😕</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
