@@ -113,7 +113,7 @@
     function start() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/736x/b4/bb/b2/b4bbb2198b036fe1024571ec6b60f8b8.jpg" />
-        <p>Darf ich dich etwas fragen?</p>
+        <p>Darf ich dich was Wichtiges fragen?</p>
         <div class="button-container">
           <button onclick="playClick(); frage1()">Ja</button>
           <button id="nein1" onclick="springen(this)">Nein</button>
@@ -124,7 +124,7 @@
     function frage1() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/564x/98/2d/4b/982d4b383ed2cd2a6a965f3c00e95f90.jpg" />
-        <p>Bist du schwul?</p>
+        <p>Stehst du auf Jungs?</p>
         <div class="button-container">
           <button onclick="playClick(); frage2()">Ja</button>
           <button onclick="playClick(); sackgasse('frage1')">Nein</button>
@@ -142,7 +142,7 @@
     function frage2() {
       content.innerHTML = `
         <img src="https://media.tenor.com/2mocGVXM0ccAAAAM/cat-meme.gif" />
-        <p>Oh ich meinte Junge. Also Bist du ein Junge?</p>
+        <p>Ups! Ich meinte natürlich... bist du ein Junge? 👀</p>
         <div class="button-container">
           <button onclick="playClick(); frage3()">Ja</button>
           <button onclick="springen(this)">Nein</button>
@@ -190,11 +190,7 @@
     function frageBeziehung() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/474x/f5/49/05/f54905bd034774177d415a91eba8edcf.jpg" />
-        <p>Willst du mit mir zusammen sein?</p>
-        <div class="button-container">
-          <button onclick="playClick(); jaBeziehung()">Ja</button>
-          <button onclick="playClick(); neinBeziehung()">Nein</button>
-        </div>
+        <p>Letzte Frage... willst du mit mir zusammen sein?♥</p>´
       `;
     }
 
@@ -207,7 +203,7 @@
     function neinBeziehung() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/736x/f1/d7/68/f1d7682721bd99e2b7e11f5e6da6de10.jpg" />
-        <p>Schade 😕</p>
+        <p>Schade 😕💔</p>
       `;
     }
   </script>
