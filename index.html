@@ -5,65 +5,74 @@
   <title>.........</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffc0cb;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
+  margin: 0;
+  padding: 0;
+  background-color: #1a001f; /* Dunkles Violett */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: #ffffff;
+}
 
-    #content {
-      text-align: center;
-      max-width: 600px;
-      position: relative;
-    }
+#content {
+  text-align: center;
+  max-width: 600px;
+  position: relative;
+}
 
-    #heart {
-      font-size: 100px;
-      animation: pulse 1s infinite alternate;
-      margin-bottom: 30px;
-    }
+#heart {
+  font-size: 100px;
+  animation: pulse 1s infinite alternate;
+  margin-bottom: 30px;
+  color: #ff66cc;
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.2); }
-    }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
 
-    button {
-      margin: 10px;
-      padding: 15px 30px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 10px;
-      border: none;
-      background-color: #ff69b4;
-      color: white;
-      transition: transform 0.2s ease;
-      position: relative;
-      z-index: 1;
-    }
+button {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background-color: #b84dff; /* Lila Button */
+  color: white;
+  transition: transform 0.2s ease, background-color 0.3s;
+  position: relative;
+  z-index: 1;
+}
 
-    img {
-      max-width: 90%;
-      height: auto;
-      margin: 20px 0;
-      border-radius: 10px;
-    }
+button:hover {
+  transform: scale(1.05);
+  background-color: #d580ff;
+}
 
-    .jumping {
-      position: absolute;
-      transition: all 0.3s ease-in-out;
-      z-index: 2;
-    }
+img {
+  max-width: 90%;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #aa00ff88;
+}
 
-    .button-container {
-      position: relative;
-      min-height: 100px;
-    }
+.jumping {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.button-container {
+  position: relative;
+  min-height: 100px;
+}
+
   </style>
 </head>
 <body>
@@ -163,7 +172,7 @@
 
     function nichtLustig() {
       content.innerHTML = `
-        <p>Okay</p>
+        <p></p>
         <img src="https://media.tenor.com/aJeIvS0AuHcAAAAe/cat1.png" />
         <br>
         <button onclick="playClick(); frage3()">Zurück</button>
@@ -172,7 +181,7 @@
 
     function lustig() {
       content.innerHTML = `
-        <p>Ich finde dich ja schon sehr lustig</p>
+        <p></p>
         <img src="https://content.imageresizer.com/images/memes/Laughing-Cat-meme-7.jpg" />
         <br>
         <button onclick="playClick(); letzteFrage()">Weiter</button>
@@ -182,7 +191,7 @@
     function letzteFrage() {
       content.innerHTML = `
 	    <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
-        <p>Okay, jetzt habe ich eine letzte Frage für dich:</p>
+        <p>Okay, jetzt habe ich eine letzte Frage für dich</p>
         <button onclick="playClick(); frageBeziehung()">Weiter</button>
       `;
     }
