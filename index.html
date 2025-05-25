@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>.........</title>
+  <title>.........</title>*
   <style>
     body {
   margin: 0;
@@ -169,29 +169,54 @@ img {
         </div>
       `;
     }
+function letzteFrage() {
+  content.innerHTML = `
+    <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
+    <p>Okay, jetzt habe ich eine letzte Frage für dich</p>
+    <button onclick="playClick(); frageDatum()">Weiter</button>
+  `;
+}
 
-    function nichtLustig() {
-      content.innerHTML = `
-        <p></p>
-        <img src="https://media.tenor.com/aJeIvS0AuHcAAAAe/cat1.png" />
-        <br>
-        <button onclick="playClick(); frage3()">Zurück</button>
-      `;
-    }
+function frageDatum() {
+  content.innerHTML = `
+    <p>Weißt du welcher Tag heute ist?</p>
+    <button onclick="playClick(); frageDatumAntwort()">Weiter</button>
+  `;
+}
 
-    function lustig() {
-      content.innerHTML = `
-        <p></p>
-        <img src="https://content.imageresizer.com/images/memes/Laughing-Cat-meme-7.jpg" />
-        <br>
-        <button onclick="playClick(); letzteFrage()">Weiter</button>
-      `;
-    }
+function frageDatumAntwort() {
+  content.innerHTML = `
+    <p>Es ist der 25.05.2025</p>
+    <button onclick="playClick(); datumSchoen()">Weiter</button>
+  `;
+}
+
+function datumSchoen() {
+  content.innerHTML = `
+    <p>Ein schönes Datum oder?</p>
+    <button onclick="playClick(); stimmeZu()">Weiter</button>
+  `;
+}
+
+function stimmeZu() {
+  content.innerHTML = `
+    <p>Finde ich auch 😌</p>
+    <button onclick="playClick(); fastFertig()">Weiter</button>
+  `;
+}
+
+function fastFertig() {
+  content.innerHTML = `
+    <p>Aber 1ne Sache noch......</p>
+    <button onclick="playClick(); frageBeziehung()">Weiter</button>
+  `;
+}
+
 
     function letzteFrage() {
       content.innerHTML = `
 	    <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
-        <p>Okay, jetzt habe ich eine letzte Frage für dich</p>
+        <p>Letze Frage.... Ich verspreche es Dir!</p>
         <button onclick="playClick(); frageBeziehung()">Weiter</button>
       `;
     }
@@ -199,14 +224,15 @@ img {
     function frageBeziehung() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/474x/f5/49/05/f54905bd034774177d415a91eba8edcf.jpg" />
-        <p>Letzte Frage... willst du mit mir zusammen sein?♥</p>´
+        <p>Willst du mit mir zusammen sein?♥</p>´
       `;
     }
 
     function jaBeziehung() {
       content.innerHTML = `
         <img src="https://media.tenor.com/ej_uvg93_v8AAAAM/yippee-iluvmybf.gif" />
-      `;
+        <p>I LOVE U TOOOOOO</p>´
+	  `;
     }
 
     function neinBeziehung() {
