@@ -2,77 +2,76 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>.........</title>*
+  <title>Liebesfrage</title>
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  background-color: #1a001f; /* Dunkles Violett */
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  color: #ffffff;
-}
+      margin: 0;
+      padding: 0;
+      background-color: #1a001f;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #ffffff;
+    }
 
-#content {
-  text-align: center;
-  max-width: 600px;
-  position: relative;
-}
+    #content {
+      text-align: center;
+      max-width: 600px;
+      position: relative;
+    }
 
-#heart {
-  font-size: 100px;
-  animation: pulse 1s infinite alternate;
-  margin-bottom: 30px;
-  color: #ff66cc;
-}
+    #heart {
+      font-size: 100px;
+      animation: pulse 1s infinite alternate;
+      margin-bottom: 30px;
+      color: #ff66cc;
+    }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.2); }
-}
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
 
-button {
-  margin: 10px;
-  padding: 15px 30px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 10px;
-  border: none;
-  background-color: #b84dff; /* Lila Button */
-  color: white;
-  transition: transform 0.2s ease, background-color 0.3s;
-  position: relative;
-  z-index: 1;
-}
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
+      background-color: #b84dff;
+      color: white;
+      transition: transform 0.2s ease, background-color 0.3s;
+      position: relative;
+      z-index: 1;
+    }
 
-button:hover {
-  transform: scale(1.05);
-  background-color: #d580ff;
-}
+    button:hover {
+      transform: scale(1.05);
+      background-color: #d580ff;
+    }
 
-img {
-  max-width: 90%;
-  height: auto;
-  margin: 20px 0;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #aa00ff88;
-}
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #aa00ff88;
+    }
 
-.jumping {
-  position: absolute;
-  transition: all 0.3s ease-in-out;
-  z-index: 2;
-}
+    .jumping {
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+      z-index: 2;
+    }
 
-.button-container {
-  position: relative;
-  min-height: 100px;
-}
-
+    .button-container {
+      position: relative;
+      min-height: 100px;
+    }
   </style>
 </head>
 <body>
@@ -81,9 +80,7 @@ img {
     <button onclick="playClick(); start()">Klick mich</button>
   </div>
 
-  <!-- Klick-Sound -->
   <audio id="clickSound" src="mixkit-mouse-click-close-1113.wav" preload="auto"></audio>
-  <!-- Sprung-Sound -->
   <audio id="jumpSound" src="cartoon-jump-6462.mp3" preload="auto"></audio>
 
   <script>
@@ -107,8 +104,7 @@ img {
 
       const buttonWidth = button.offsetWidth;
       const buttonHeight = button.offsetHeight;
-
-      const margin = 50; // Abstand zu den Rändern
+      const margin = 50;
       const maxX = window.innerWidth - buttonWidth - margin;
       const maxY = window.innerHeight - buttonHeight - margin;
 
@@ -153,86 +149,88 @@ img {
         <img src="https://media.tenor.com/2mocGVXM0ccAAAAM/cat-meme.gif" />
         <p>Ups! Ich meinte natürlich... bist du ein Junge? 👀</p>
         <div class="button-container">
-          <button onclick="playClick(); frage3()">Ja</button>
+          <button onclick="playClick(); letzteFrage1()">Ja</button>
           <button onclick="springen(this)">Nein</button>
         </div>
       `;
     }
 
-    function frage3() {
+    function letzteFrage1() {
       content.innerHTML = `
-        <img src="https://i.pinimg.com/236x/2d/e3/52/2de35203d04ced9f4239befc87a95a35.jpg" />
-        <p>Denkst du ich bin lustig?</p>
-        <div class="button-container">
-          <button onclick="playClick(); lustig()">Ja</button>
-          <button onclick="playClick(); nichtLustig()">Nein</button>
-        </div>
-      `;
-    }
-function letzteFrage() {
-  content.innerHTML = `
-    <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
-    <p>Okay, jetzt habe ich eine letzte Frage für dich</p>
-    <button onclick="playClick(); frageDatum()">Weiter</button>
-  `;
-}
-
-function frageDatum() {
-  content.innerHTML = `
-    <p>Weißt du welcher Tag heute ist?</p>
-    <button onclick="playClick(); frageDatumAntwort()">Weiter</button>
-  `;
-}
-
-function frageDatumAntwort() {
-  content.innerHTML = `
-    <p>Es ist der 25.05.2025</p>
-    <button onclick="playClick(); datumSchoen()">Weiter</button>
-  `;
-}
-
-function datumSchoen() {
-  content.innerHTML = `
-    <p>Ein schönes Datum oder?</p>
-    <button onclick="playClick(); stimmeZu()">Weiter</button>
-  `;
-}
-
-function stimmeZu() {
-  content.innerHTML = `
-    <p>Finde ich auch 😌</p>
-    <button onclick="playClick(); fastFertig()">Weiter</button>
-  `;
-}
-
-function fastFertig() {
-  content.innerHTML = `
-    <p>Aber 1ne Sache noch......</p>
-    <button onclick="playClick(); frageBeziehung()">Weiter</button>
-  `;
-}
-
-
-    function letzteFrage() {
-      content.innerHTML = `
-	    <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
-        <p>Letze Frage.... Ich verspreche es Dir!</p>
-        <button onclick="playClick(); frageBeziehung()">Weiter</button>
+        <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
+        <p>Okay, jetzt habe ich eine letzte Frage für dich</p>
+        <button onclick="playClick(); frageDatum()">Weiter</button>
       `;
     }
 
-    function frageBeziehung() {
+    function frageDatum() {
+      content.innerHTML = `
+        <p>Weißt du welcher Tag heute ist?</p>
+        <button onclick="playClick(); frageDatumAntwort()">Weiter</button>
+      `;
+    }
+
+    function frageDatumAntwort() {
+      content.innerHTML = `
+        <p>Es ist der 25.05.2025</p>
+        <button onclick="playClick(); datumSchoen()">Weiter</button>
+      `;
+    }
+
+    function datumSchoen() {
+      content.innerHTML = `
+        <p>Ein schönes Datum oder?</p>
+        <button onclick="playClick(); stimmeZu()">Weiter</button>
+      `;
+    }
+
+    function stimmeZu() {
+      content.innerHTML = `
+        <p>Finde ich auch 😌</p>
+        <button onclick="playClick(); fastFertig()">Weiter</button>
+      `;
+    }
+
+    function fastFertig() {
+      content.innerHTML = `
+        <p>Aber 1ne Sache noch......</p>
+        <button onclick="playClick(); letzteFrage2()">Weiter</button>
+      `;
+    }
+
+    function letzteFrage2() {
+      content.innerHTML = `
+        <img src="https://media.tenor.com/Cse00b9Ls-4AAAAM/goobers.gif" />
+        <p>Letzte Frage.... Ich verspreche es Dir!</p>
+        <button onclick="playClick(); liebesGestaendnis()">Weiter</button>
+      `;
+    }
+
+    function liebesGestaendnis() {
+      content.innerHTML = `
+        <p>Wir kennen uns jetzt schon etwas über 3 Wochen, also zumindest in denen wir kontinuierlich geschrieben oder miteinander geredet haben.</p>
+        <p>Ich hätte mir nie im Leben erdenken können, dass ich mal einem Jungen das sage...</p>
+        <p>Aber ich liebe dich und ich will mit dir zusammen sein und mit dir zusammen einen Weg einschlagen.</p>
+        <button onclick="playClick(); beziehung()">Weiter</button>
+      `;
+    }
+
+    function beziehung() {
       content.innerHTML = `
         <img src="https://i.pinimg.com/474x/f5/49/05/f54905bd034774177d415a91eba8edcf.jpg" />
-        <p>Willst du mit mir zusammen sein?♥</p>´
+        <p>Willst du mit mir zusammen sein?♥</p>
+        <div class="button-container">
+          <button onclick="playClick(); jaBeziehung()">Ja</button>
+          <button onclick="playClick(); neinBeziehung()">Nein</button>
+        </div>
       `;
     }
 
     function jaBeziehung() {
       content.innerHTML = `
         <img src="https://media.tenor.com/ej_uvg93_v8AAAAM/yippee-iluvmybf.gif" />
-        <p>I LOVE U TOOOOOO</p>´
-	  `;
+        <p>I LOVE U TOOOOOO</p>
+      `;
     }
 
     function neinBeziehung() {
